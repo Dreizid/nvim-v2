@@ -15,6 +15,8 @@ return {
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPost", "BufNewFile" },
+		lazy = true,
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
 			-- Mason must be loaded before its dependents so we need to set it up here.
@@ -264,6 +266,8 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"black", -- Used to format Python code
+				"isort", -- Used to format Python imports
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -282,7 +286,8 @@ return {
 				},
 			})
 
-			require("java").setup()
+			-- Java LSP
+			-- require("java").setup()
 		end,
 	},
 }
