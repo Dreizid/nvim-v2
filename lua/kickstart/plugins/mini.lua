@@ -20,6 +20,8 @@ return {
 			-- Commenting in Normal mode
 			require("mini.comment").setup()
 
+			-- Move blocks of code using alt + hjkl
+			require("mini.move").setup()
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
